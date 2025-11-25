@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOGo Webmail 使用方法ガイド</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .url-box {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .url-box a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .notice {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: #856404;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .step {
+            margin-bottom: 40px;
+            border-left: 4px solid #4facfe;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -15px;
+            top: 0;
+            background: #4facfe;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .step h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .step p {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .login-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #dee2e6;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #4facfe;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .settings-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .settings-list ul {
+            list-style: none;
+        }
+        
+        .settings-list li {
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .settings-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-name {
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .setting-value {
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #4facfe;
+            border-radius: 3px;
+            margin-right: 8px;
+            vertical-align: middle;
+            position: relative;
+        }
+        
+        .icon::after {
+            content: '⚙️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+        
+        .icon.mail::after {
+            content: '✉️';
+        }
+        
+        .icon.signature::after {
+            content: '✍️';
+        }
+        
+        .icon.save::after {
+            content: '💾';
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .warning {
+            background: #ffe6e6;
+            border: 1px solid #ffb3b3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #d63031;
+        }
+        
+        .success {
+            background: #e8f5e8;
+            border: 1px solid #b3d9b3;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #27ae60;
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #4facfe;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #3a94e6;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .step {
+                padding-left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📧 SOGo Webmail</h1>
+            <p>使用方法ガイド</p>
+            <div class="url-box">
+                <strong>アクセスURL:</strong><br>
+                <a href="https://webmail.shirohige.clinic/SOGo/" target="_blank">
+                    https://webmail.shirohige.clinic/SOGo/
+                </a>
+            </div>
+        </div>
+        
+        <div class="notice">
+            ⚠️ 重要：2025年7月13日以降にアクセスが可能になります
+        </div>
+        
+        <div class="content">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h2><span class="icon"></span>ログイン方法</h2>
+                <p>SOGoメーラーにアクセスして、以下の情報でログインします。</p>
+                
+                <div class="login-form">
+                    <div class="form-group">
+                        <label>ユーザー名</label>
+                        <input type="email" placeholder="ご自身のメールアドレス" readonly>
+                        <small>※ご自身のメールアドレスを入力してください</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>パスワード</label>
+                        <input type="password" placeholder="パスワード" readonly>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">ユーザー名を記憶する</label>
+                    </div>
+                </div>
+                
+                <div class="success">
+                    💡 「ユーザー名を記憶する」を設定すると、次回ログイン時にメールアドレスが自動入力されます！
+                </div>
+                
+                <p><strong>言語設定の確認：</strong></p>
+                <p>ログイン画面で言語が<span class="highlight">「日本語」</span>になっていることを確認してください。</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h2><span class="icon"></span>初期設定（最初のログイン時のみ）</h2>
+                <p>ログイン後、左上の<span class="highlight">⚙️ 歯車のアイコン</span>をクリックして詳細設定を行います。</p>
+                
+                <div class="settings-list">
+                    <h3>📋 設定項目</h3>
+                    <ul>
+                        <li>
+                            <span class="setting-name">言語</span>
+                            <span class="setting-value">→ 日本語</span>
+                        </li>
+                        <li>
+                            <span class="setting-name">タイムゾーン</span>
+                            <span class="setting-value">→ Japan</span>
+                        </li>
+                        <li>
+                            <span class="setting-name">短い日付の表示形式</span>
+                            <span class="setting-value">→ 西暦/月/日</span>
+                        </li>
+                        <li>
+                            <span class="setting-name">長い日付の表示形式</span>
+                            <span class="setting-value">→ 西暦/月/日　曜日</span>
+                        </li>
+                        <li>
+                            <span class="setting-name">時間の表示形式</span>
+                            <span class="setting-value">→ 12時間表記 または 24時間表記</span>
+                        </li>
+                        <li>
+                            <span class="setting-name">デスクトップ通知</span>
+                            <span class="setting-value">→ ✅ 有効にする</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="warning">
+                    <span class="icon save"></span>
+                    <strong>重要：</strong>設定完了後、右上の<span class="highlight">🟢 緑の円のアイコン</span>をクリックして保存してください！
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h2><span class="icon mail"></span>メール設定</h2>
+                <p>左のメニューから<span class="highlight">「メール」</span>をクリックします。</p>
+                
+                <div class="settings-list">
+                    <h3>📝 メッセージ作成設定</h3>
+                    <p>一般メニュー下部の「メッセージの作成方法」を変更します：</p>
+                    <ul>
+                        <li>
+                            <span class="setting-name">変更前</span>
+                            <span class="setting-value">HTML</span>
+                        </li>
+                        <li>
+                            <span class="setting-name">変更後</span>
+                            <span class="setting-value">→ プレーンテキスト</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="success">
+                    <span class="icon save"></span>
+                    設定変更後、右上の<span class="highlight">🟢 緑の円のアイコン</span>をクリックして保存してください。
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <h2><span class="icon signature"></span>署名設定（オプション）</h2>
+                <p>メールの署名を使用したい方のための設定です。</p>
+                
+                <div class="settings-list">
+                    <h3>✍️ 署名作成手順</h3>
+                    <ol style="list-style: decimal; margin-left: 20px;">
+                        <li style="margin-bottom: 10px;">「IMAPアカウント」メニューをクリック</li>
+                        <li style="margin-bottom: 10px;">右上の<span class="highlight">✏️ 鉛筆マークのアイコン</span>をクリック</li>
+                        <li style="margin-bottom: 10px;">「差出人情報」を設定して署名を作成</li>
+                        <li style="margin-bottom: 10px;">「新しい差出人情報」で複数の署名を作成可能</li>
+                        <li style="margin-bottom: 10px;">使用したい署名に<span class="highlight">❤️ ハートマーク</span>をチェック</li>
+                        <li>設定を保存</li>
+                    </ol>
+                </div>
+                
+                <div class="success">
+                    💡 署名は複数作成でき、用途に応じて使い分けることができます！
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🎉 設定完了！これでSOGo Webmailをご利用いただけます</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">
+                ご不明な点がございましたら、DX開発事業部にお問い合わせください。
+            </p>
+        </div>
+    </div>
+</body>
+</html>

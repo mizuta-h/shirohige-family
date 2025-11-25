@@ -1,0 +1,848 @@
+/*
+Theme Name: Lightning Child Sample
+Theme URI:
+Template: lightning
+Description:
+Author:
+Tags:
+Version: 0.6.1
+*/
+
+
+/*
+独自のカスタマイズを定義
+*/
+
+/*
+全体共通スタイリング
+*/
+/* 変数の定義 (seki 20250220) */
+:root {
+  /* メインカラー */
+  --maincolor-green: #01a77c;
+  --maincolor-lightgreen: #e6f1de;
+  --maincolor-beige: #fcf7ec;
+  --maincolor-black: #333333;
+	--maincolor-white: #fff;
+  /* 角丸数値 */
+  --radius-value: 10px;
+}
+
+/* 見出しのフォントを修正 (seki 20250220) */
+h1, h2, h3, h4, h5, h6, .page-header-title, .common__font--roundgothic {
+	font-family: "Zen Maru Gothic", serif !important;
+	font-weight: 700 !important;
+}
+
+ /* PCとSPでの表示切り替え (seki 20250328) */
+ .common__content--pc {
+	display: block;
+}
+.common__content--sp {
+	display: none;
+}
+@media screen and (max-width: 990px) {
+        .common__content--pchidden {
+             display: none;
+        }
+}
+@media screen and (max-width: 990px) {
+	.common__content--sp {
+		display: block;
+	}
+}
+
+/* リストの装飾を削除 (seki 20250220) */
+.common__list--nostyle {
+	list-style: none;
+	margin-left: -20px;
+}
+
+/* テキスト装飾の削除 (seki 202503204) */
+a {
+	text-decoration: none !important;
+}
+
+/* 画像の角丸設定 (seki 20250220) */
+.common__img--round {
+	img {
+		border-radius: var(--radius-value);
+	}
+}
+
+/* 背景色の角丸設定 (seki 20250324) */
+.common__back--round {
+	border-radius: var(--radius-value);
+}
+
+/* 画像に緑の影を付ける (seki 20250220) */
+.common__img--greenshadow {
+	img {
+		box-shadow: 10px 10px var(--maincolor-green);
+	}
+}
+
+/* トップページとフッターのタイトルスタイル調整 (seki 20250220) */
+.common__englishtitle--style {
+   font-family: "Rubik", serif;
+   font-weight: 700;
+	 font-size: 3.5rem;
+}
+.common__japanesetitle--style {
+	font-size: 1.2rem;
+}
+.common__englishtitle--layout {
+	margin-bottom: -15px;
+}
+.common__japanesetitle--layout {
+	margin-top: 0px;
+}
+
+/* 仕切り線のスタイル設定 (seki 20250220) */
+.common--line__style {
+	height: 4px;
+	border-radius: 4px;
+}
+
+/* 固定ページのヘッダー画像の大きさ変更設定 (seki 20250220) */
+.page-header {
+	margin: 10px 35px 5px 35px;
+	height: 45vh;
+	border-radius: var(--radius-value);
+}
+@media screen and (min-width: 1200px) {
+	.page-header {
+		margin: 10px auto 5px auto;
+		width: 90%;
+		max-width: 1050px;
+	}
+}
+@media screen and (max-width: 990px) {
+    .page-header {
+        margin: 10px 20px 5px 20px;
+    }
+}
+
+/* パンくずリストのライン削除 (seki 20250220) */
+.breadcrumb {
+	border-top: unset;
+	border-bottom: unset;
+}
+/* パンくずリストのホバー色変更 (seki 20250220) */
+.breadcrumb-list__item {
+	a:hover {
+		color: var(--maincolor-green);
+	}
+}
+
+/* 文字色を変更 (seki 20250220) */
+.common__font--colorgreen {
+	color: var(--maincolor-green);
+}
+.common__font--colorlightgreen {
+	color: var(--maincolor-lightgreen);
+}
+.common__font--white {
+	color: var(--maincolor-white);
+}
+
+/* 固定ページの見出しのスタイル変更 (seki 20250220) */
+.common__titleh2--underline {
+	position: relative !important;
+  　　margin-bottom: 1.5em !important;
+}
+.common__titleh2--underline:before {
+	content: '';
+	position: absolute;
+	bottom: -10px;
+	display: inline-block;
+	width: 60px;
+	height: 3px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	background-color: var(--maincolor-green);
+	border-radius: 2px;
+}
+
+/* テーブルブロックのスタイル修正 (seki 20250220) */
+/* テーブルを角丸にする */
+.wp-block-table {
+	border: 1.5px solid var(--vk-color-border-hr);
+	border-radius: var(--radius-value);
+}
+/* テーブルの背景色を変更 */
+.wp-block-table {
+	tr {
+		td:first-of-type {
+			background-color: var(--maincolor-lightgreen);
+		}
+	}
+}
+
+/* ブロックのマージンをリセット (seki 20250220) */
+.common__block--marginunset {
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+
+/* ブロックのパディングをリセット (seki 20250220) */
+.common__block--paddingunset {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+/* ブロックのgapをリセット (seki 20250220) */
+.common__block--gapunset {
+	gap: 0px;
+}
+
+/* グリッドカラムブロックのスタイル調整 (seki 20250220) */
+.common__cardtitle--layout {
+   margin-top:  5px !important;
+   margin-bottom: 5px !important;
+}
+
+/* 背景色を変更 (seki 20250220) */
+.common__block--greenback {
+   background-color: var(--maincolor-green);
+}
+.common__block--lightgreenback {
+   background-color: var(--maincolor-lightgreen);
+}
+
+/* フォントを変更 (seki 20250220) */
+.common__font--zenmarubold {
+	font-family: "Zen Maru Gothic", serif !important;
+	font-weight: 700 !important;
+}
+
+/* リンクのスタイル修正 (seki 20250221) */
+.common__link--style {
+	a {
+		text-decoration: none !important;
+		color: var(--maincolor-black) !important;
+	}
+	a:hover {
+		color: var(--maincolor-green) !important;
+	}
+}
+
+/* メディアとテキストのスタイル修正 (seki 20250221) */
+@media screen and (max-width: 990px) {
+	.common__mediatext--layout {
+		.wp-block-media-text__media {
+			margin-bottom: 10px;
+		}
+		.wp-block-media-text__content {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+
+/* 個別ページのヘッダータイトルに背景色追加 (seki 20250225) */
+.page-header-title {
+	width: fit-content;
+	background-color: rgb(255 255 255 / 0.7);
+        text-align: left;
+}
+
+/* bodyの上下のpaddingの削除 (seki 20250326) */
+.site-body {
+	padding: 2rem 0 4rem;
+}
+
+/*
+モバイル固定ナビ
+*/
+/* モバイル固定ナビのスタイル調整 (seki 20250220) */
+.mobile-fix-nav-menu {
+	font-family: "Zen Maru Gothic", serif;
+	font-weight: 500;
+	a {
+	   font-size: 1.0rem;
+	}
+	background: linear-gradient( 90deg, var(--maincolor-lightgreen) 1%, var(--maincolor-lightgreen) 46%, var(--maincolor-green) 56%, var(--maincolor-green) 100%);
+}
+.mobile-fix-nav-menu li:last-of-type a {
+		color: var(--maincolor-white) !important;
+}
+
+/*
+トップページ
+*/
+/* ヒーローイメージのスタイル調整 (seki 20250207) */
+.swiper-container {
+	margin: 0px 35px 35px 35px;
+	height: 75vh;
+}
+.ltg-slide-item-img {
+	height: 75vh !important;
+	object-fit: cover;
+	border-radius: var(--radius-value);
+}
+@media screen and (max-width: 990px) {
+	.swiper-container {
+			margin: 5px 20px 5px 20px;
+			height: 60vh;
+	}
+	.ltg-slide-item-img {
+		height: 60vh !important;
+	}
+}
+.ltg-slide-cover {
+	border-radius: var(--radius-value);
+}
+/* サイトキャッチコピーのスタイル調整 (seki 20250207) */
+.ltg-slide-text-caption {
+ font-family: "Zen Maru Gothic", serif;
+ font-weight: 700;
+ font-size: 1.75rem;
+}
+@media screen and (max-width: 990px) {
+	.ltg-slide-text-caption {
+			font-size: 1.4rem;
+	}
+}
+/* 位置調整 */
+.ltg-slide-text-set {
+	top: 80%;
+}
+@media screen and (max-width: 990px) {
+	.ltg-slide-text-set {
+		top: 80%;
+	}
+}
+/* サイト概要のスタイル調整 (seki 20250207) */
+ .home__message--layout {
+        margin: 0 auto 75px auto;
+        width: fit-content;
+	p { 
+		width: fit-content;
+		margin: 0 auto 10px auto; 
+	}
+ }
+@media screen and (max-width: 990px) {
+       .home__message--layout {
+	    margin: 0 auto 50px auto;
+	}
+ }
+/* サイトリンクのスタイル調整 (seki 20250207) */
+.home__container--layout {
+ margin-top: 25px;
+ padding-top: 80px;
+}
+@media screen and (max-width: 990px) {
+ .home__container--layout {
+		padding-top: 60px;
+ }
+}
+/* サイトリンクのリストのスタイル調整 (seki 20250207) */
+.home__list--layout {
+	li {
+			margin-top: 1em;
+			margin-bottom: 1em;
+	}
+}
+
+
+/*
+しろひげ在宅診療所について
+*/
+/* 法人の想いのスタイル調整 (seki 20250212) */
+.about__thoughtsnum--layout {
+	p {
+			margin-bottom: 0px;
+	}
+}
+
+/* 院長メッセージのスタイル調整 (seki 20250212) */
+/* 名前のスタイル修正 */
+.about__messagepost--style, .about__messagename--style {
+	font-family: "Zen Maru Gothic", serif !important;
+	font-weight: 700 !important;
+}
+.about__messagename--style {
+	font-size: 1.5rem;
+}
+.about__messagepost--layout {
+	margin-bottom: 0px;
+}
+.about__messagename--layout {
+	margin-bottom: 25px;
+}
+@media screen and (max-width: 990px) {
+	.about__messagename--layout {
+			margin-bottom: 15px;
+	}
+}
+
+/* テーブルのスタイル修正 (seki 20250212) */
+.about__tabletext--style {
+ tr {
+		td:first-of-type {
+			 font-size: 0.8rem;
+			 width: 150px;
+		}
+ }
+}
+.about__tabletext--style {
+ td {
+		padding: 0.7rem !important;
+ }
+}
+
+/* 診療実績のスタイル調整 (seki 20250212) */
+.about__achievementpatient--style {
+ max-width: 500px;
+ height: auto;
+}
+.about__achievementpatient--layout {
+ margin: 0 auto;
+}
+
+/* 沿革のスタイル調整 (seki 20250225) */
+.about__timelinecaption--style {
+	.vk_timeline_item_caption {
+		font-family: "Rubik", serif;
+		font-weight: 700;
+		font-size: 2.0rem;
+                margin-bottom: 0.6em !important;
+                color: var(--maincolor-green) !important;
+	}
+}
+
+
+/*
+医師紹介
+*/
+/* しろひげ在宅診療所の医師についてのスタイル修正 (seki 20250213) */
+/* フォントスタイルの修正 */
+.doctor__personalitylist--style {
+	font-family: "Zen Maru Gothic", serif;
+	font-weight: 700;
+	font-size: 1.1rem;
+}
+/* マージン設定 */
+.doctor__personalitylist--style {
+	.wp-block-vk-blocks-grid-column-item {
+		 margin-bottom: 12px;
+	}
+}
+@media screen and (max-width: 990px) {
+	.doctor__personalitylist--style {
+		 .wp-block-vk-blocks-grid-column-item {
+				margin-bottom: 8px;
+		 }
+	}
+}
+
+/* 在籍医師情報のスタイル修正 (seki 20250213) */
+/* ボックス内のフォント種類の修正 */
+.doctor__infobox--style {
+	font-family: "Zen Maru Gothic", serif;
+	font-weight: 700;
+}
+/* ボックスを角丸に修正 */
+.doctor__infofirstbox--style {
+	.vk_borderBox_title_container {
+		 border-radius: var(--radius-value) var(--radius-value) 0 0;
+	}
+}
+.doctor__infolastbox--style {
+	.vk_borderBox_body {
+		 border-radius: 0 0 var(--radius-value) var(--radius-value);
+	}
+}
+/* ボックスタイトルの修正 */
+.doctor__infoboxtitle--layout {
+	text-align: center;
+}
+/* 「体制」のスタイル修正 */
+.doctor__infosystem--backgreen {
+	background-color: var(--maincolor-green);
+	width: 110px;
+	height: 43px;
+	line-height: 43px;
+	border-radius: var(--radius-value);
+}
+.doctor__infosystemgreen--layout {
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: center;
+}
+.doctor__infosystem--backlightgreen {
+	background-color: var(--maincolor-lightgreen);
+	height: 43px;
+	line-height: 43px;
+	border-radius: var(--radius-value);
+	border: 2px solid var(--maincolor-green);
+}
+/* 「男女比」のスタイル修正 */
+.doctor__infogenderfigure--layout {
+	width: 85%;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/* 「在宅経験者率」「当直者率」のスタイル修正 */
+.doctor__infonum--style {
+	font-size: 2.5rem;
+}
+
+/* しろひげ在宅診療所の医師紹介動画についてのスタイル修正 (seki 20250213) */
+.doctor__movie--layout {
+	max-width: 700px;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+
+/*
+働くメリット
+*/
+/* 見出しスタイル修正 (seki 20250213) */
+.merit__titlestethoscope--layout::before {
+	content: '';
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-image: url('https://job.shirohige-family.or.jp/wp-content/uploads/2025/02/stethoscope-icon.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+.merit__titleupward--layout::before {
+	content: '';
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-image: url('https://job.shirohige-family.or.jp/wp-content/uploads/2025/02/upward-icon.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+.merit__titlebeginner--layout::before {
+	content: '';
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-image: url('https://job.shirohige-family.or.jp/wp-content/uploads/2025/02/beginner-icon.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+.merit__titleteam--layout::before {
+	content: '';
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-image: url('https://job.shirohige-family.or.jp/wp-content/uploads/2025/02/team-icon.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+
+/*
+働く環境
+*/
+/* 1日のスケジュールのスタイル調整 (seki 20250214) */
+@media screen and (max-width: 990px) {
+	.environment__schedulecontainer--layout {
+		 gap: 10px !important;
+	}
+	.environment__schedulebox--layout {
+			padding: 1.4rem 1.1rem 1.4rem 1.1rem !important;
+	}
+	.wp-block-column:has(> .environment__schedulebox--layout) {
+		 flex-basis: 55% !important;
+	}
+	.environment__scheduletime--style {
+		 font-size: 0.8rem !important;
+	}
+	.environment__scheduletext--style {
+		 font-size: 1rem !important;
+	}
+	.wp-block-column:has(> .environment__scheduleimg--layout) {
+		 flex-basis: 45% !important;
+	}
+}
+
+/* ワークライフバランスのスタイル調整 (seki 20250214) */
+.environment__selectedbox--layout {
+	padding-left: 30px;
+	padding-right: 30px;
+	border-radius: var(--radius-value);
+}
+
+/* 数字で見るしろひげ在宅診療所のスタイル調整 (seki 20250214) */
+/* フォントを変更 */
+.environment__num--style {
+	font-family: "Zen Maru Gothic", serif;
+	font-weight: 700;
+	font-size: 2.3rem;
+}
+/* コンテンツの横幅を調整 */
+.environment__numbercontainer--layout {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/* アイテムの背景色のスタイル修正 */
+.environment__numberitem--style {
+	border-radius: var(--radius-value);
+}
+.environment__numberitem--layout {
+	padding-top: 15px;
+}
+
+/* 職場ギャラリーのスタイル調整 (seki 20250214) */
+.common__caption--leftjustified {
+	figcaption {
+		 text-align: left;
+	}
+}
+.environment__gallery--layout {
+	max-width: 600px;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/*
+Q&A
+*/
+/* アコーディオンのスタイル調整 (seki 20250220) */
+.faq__qcontainer--style {
+	font-family: "Zen Maru Gothic", serif;
+	font-weight: 700;
+	border-radius: var(--radius-value);
+}
+.faq__acontainer--style {
+	border-bottom-left-radius: var(--radius-value);
+	border-bottom-right-radius: var(--radius-value);
+}
+
+
+/*
+見学 / エントリー
+*/
+/* 選考の流れのスタイル修正 (seki 20250214) */
+.entry__flownum--style {
+	font-family: "Rubik", serif;
+	font-weight: 700;
+	font-size: 1.2rem;
+}
+.entry__flowtitle--style {
+	font-family: "Zen Maru Gothic", serif;
+	font-weight: 700;
+}
+
+/* エントリーフォームのスタイル修正 (seki 20250214) */
+/* 項目の見出し修正 */
+.form__itemtitle--style {
+	font-weight: 700;
+}
+.form__itemtitle--layout {
+	margin-bottom: 4px;
+}
+.form__required--style {
+	background-color: var(--maincolor-green);
+	color: var(--maincolor-white);
+}
+.form__required--layout {
+	padding-left: 8px;
+	padding-right: 8px;
+	border-radius: 20px;
+	margin-left: 5px;
+}
+/* fieldsetタグのスタイル修正 */
+.page-id-158 {
+	fieldset {
+		 border: none;
+		 padding-left: 0px;
+	}
+}
+/* labelタグのスタイル修正 */
+.page-id-158 {
+	p:has(> .form__singleformlabel--layout) {
+		 display: none;
+	}
+}
+/* 「生年月日」のスタイル修正 */
+.your-birth-year, .your-birth-month, .your-birth-day {
+	width: 18vw;
+}
+.form__yeartext--layout, .form__monthtext--layout, .form__daytext--layout {
+	margin-left: 3px;
+	margin-right: 7px;
+}
+/* プライバシーポリシーのスタイル修正 */
+.form__lastcheck--layout {
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+}
+/* ボタンのスタイル修正 */
+.form__checkbtn--layout {
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	.wpcf7-spinner {
+		 display: none;
+	}
+}
+.form__checkbtn--style {
+	input {
+		 border-radius: 50px;
+	}
+}
+
+
+/*
+エントリーフォーム確認画面
+*/
+/* 確認画面のスタイル修正 (seki 20250220) */
+/* 項目の見出し修正 */
+.form__itemtitle--style {
+	font-weight: 700;
+}
+.form__itemtitle--layout {
+	margin-bottom: 4px;
+}
+.form__required--style {
+	background-color: var(--maincolor-green);
+	color: var(--maincolor-white);
+}
+.form__required--layout {
+	padding-left: 8px;
+	padding-right: 8px;
+	border-radius: 20px;
+	margin-left: 5px;
+}
+/* fieldsetタグのスタイル修正 */
+.page-id-53, .page-id-35 {
+	fieldset {
+		 border: none;
+		 padding-left: 0px;
+	}
+}
+/* labelタグのスタイル修正 */
+.page-id-53, .page-id-35 {
+	p:has(> .form__singleformlabel--layout) {
+		 display: none;
+	}
+}
+/* ボタンのスタイル修正 */
+.form__returnbtn--layout {
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	p {
+		 width: fit-content;
+	}
+}
+.form__submitbtn--style {
+	.input {
+		 border-radius: 50px !important;
+	}
+}
+.form__submitbtn--layout {
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	p {
+		 width: fit-content;
+	}
+	.wpcf7-spinner {
+		 display: none;
+	}
+}
+
+/*
+投稿ページ共通
+*/
+/* 投稿ページの不要な表示を非表示にする (seki 20250225) */
+/* お知らせ・医師インタビュー投稿ページから投稿日、更新日、投稿者情報の非表示 */
+.post-template-default, .interview-template-default {
+	.entry-meta {
+		display:none;
+	}
+}
+/* お知らせ・医師インタビューの投稿ページからコメントの非表示 */
+.post-template-default, .interview-template-default {
+	.comments-area {
+		display:none;
+	}
+}
+
+/*
+医師インタビュー
+*/
+/* 不要なh1とカテゴリの表示を非表示 (seki 20250220) */
+.interview-template-default {
+	.entry-title {
+		display: none !important;
+	}
+	.entry-meta-data-list {
+		display: none !important;
+	}
+}
+/* インタビューのタイトルのスタイル修正 (seki 20250220) */
+.interview__title--style {
+ font-size: 1.5rem;
+}
+/* 医師インタビューページのヘッダー画像の大きさ調整 (seki 20250225) */
+.interview-template-default {
+	.page-header {
+		height: 60vh;
+	}
+}
+/* 医師インタビューページのプロフィール写真装飾追加 (seki 20250225) */
+.interview__profiletitle--style {
+	font-family: "Rubik", serif;
+	font-weight: 700;
+	font-size: 2.5rem;
+}
+.interview-profileimg-greenstyle {
+	img {
+		box-shadow: 30px 30px var(--maincolor-green);
+	}
+}
+.interview-profileimg-lightgreenstyle {
+	img {
+		box-shadow: 30px 30px var(--maincolor-lightgreen);
+	}
+}
+@media screen and (max-width: 990px) {
+	.interview-profileimg-layout {
+		img {
+			margin-bottom: 30px;
+		}
+	}
+}
+
+/*
+お知らせ
+*/
+/* サイドバーの投稿のアイキャッチ削除 (seki 20250305) */
+.sub-section {
+	.media-img {
+		display: none;
+	}
+}
+/* アーカイブページのヘッダー画像を非表示 (seki 20250324) */
+.category-info {
+	.page-header {
+		display: none;
+	}
+}
+
+/*
+その他
+*/
+/* reCAPCHAのアイコンを非表示(seki 20250326) */
+.grecaptcha-badge { visibility: hidden; }
